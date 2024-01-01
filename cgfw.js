@@ -1,8 +1,9 @@
 // Initalize function and variables --------------------------------------------------------------
+let canvas;
 let awakeFunction;
 let gameLogicFunction;
 function initCGFW(awake, gameLogic, html_canvas, drawfunction, w, h, fs = false){
-    initCG(html_canvas, drawfunction, w, h, fs);
+    canvas = addCGCanvas(html_canvas, drawfunction, w, h, fs);
 
     awakeFunction = awake;
     gameLogicFunction = gameLogic;
@@ -31,7 +32,7 @@ function Update(){
     //logicTime = Date.now() - logicTime;
     
     //let drawTime = Date.now();
-    CGDraw();
+    CGDraw(canvas);
     //drawTime = Date.now() - drawTime;
     //console.log('logicTime:' + logicTime + '   draw time: ' + drawTime);
 
@@ -155,7 +156,7 @@ class TextBox{
 }
 
 function getTextWidth(text, fontSize){
-    ctx.font = fontSize + 'px Arial';
-    return ctx.measureText(text).width;
+    canvas.ctx.font = fontSize + 'px Arial';
+    return canvas.ctx.measureText(text).width;
 }
 // ----------------------------------------------------------------------------------------------
