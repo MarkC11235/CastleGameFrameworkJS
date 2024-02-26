@@ -52,7 +52,11 @@ function truncate(num, places){
 //call this function to get the mouse position
 //have to send the event from the event listener
 function getMousePos(e){
-    let rect = canvas.getBoundingClientRect();
+    console.log('getMousePos');
+    console.log(e);
+    console.log(canvas);
+    //have to do canvas.canvas because canvas is CGCanvas object
+    let rect = canvas.canvas.getBoundingClientRect();
     let x = e.clientX - rect.left;
     let y = e.clientY - rect.top;
     [x,y] = reverseStandardize(x, y); //convert to user coordinates
